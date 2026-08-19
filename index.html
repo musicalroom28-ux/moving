@@ -38,330 +38,304 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Custom Styles & Animation Utilities */
         body {
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
-            background-color: #0f172a;
+            background-color: #0a0a0f;
             color: #cbd5e1;
         }
 
-        /* Fade-in scroll animation setup */
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-            will-change: opacity, transform;
-        }
+        /* thin dark scrollbar for sidebar */
+        .sidebar-scroll::-webkit-scrollbar { width: 6px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background-color: #334155; border-radius: 9999px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background-color: transparent; }
 
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .video-card { opacity: 0; transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+        .video-card.is-shown { opacity: 1; transform: translateY(0); }
 
-        /* Glassmorphic Navbar Background */
-        .glass-nav {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
+        #video-modal.is-open { display: flex; }
     </style>
 </head>
 <body class="antialiased selection:bg-brand-500 selection:text-white text-slate-300">
 
-    <main>
-        <section id="videos" class="fade-in-section is-visible py-20 bg-slate-900 text-white">
-            <div class="max-w-[86.4rem] mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-xl mx-auto mb-16">
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">영상자료</h2>
-                    <p class="text-slate-400 mt-2 text-sm sm:text-base">공연 조명 디자인 및 작업 영상입니다. 계속 업데이트될 예정입니다.</p>
-                </div>
+    <div class="flex min-h-screen">
 
-                <!-- Concert Titles Side by Side -->
-                <div class="flex flex-col lg:flex-row gap-12 mb-16">
-
-                <!-- Concert: 인디밴드 까치산 -->
-                <div class="flex-1">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">인디밴드 까치산</h3>
-                    <div class="grid grid-cols-1 gap-4 max-w-md">
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/86jvbvHC4Z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/CYpCE1ezoC4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/1NfqstcCfKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/0x78K8cfcs8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/on6IxMdR6pc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Concert: 인디밴드 크리스피 -->
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mt-8 mb-4">인디밴드 크리스피</h3>
-                    <div class="grid grid-cols-1 gap-4 max-w-md">
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/2FhLVM7Ejvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/BFgqLEcIOQU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/nkRDm1foXgU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/JjusIkn9FbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/2FhLVM7Ejvc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/g_KwSM2gj3Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Concert: 인디밴드 극동아시아타이거즈 -->
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mt-8 mb-4">인디밴드 극동아시아타이거즈</h3>
-                    <div class="grid grid-cols-1 gap-4 max-w-md">
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/c7A7tWn1hbs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/D3uwsgBn6eI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/BQ-C6kY99Y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ggk1CLG4xJY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/mmKm0UgY_eM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Concert: BIGLIGHTT DESIGN AI -->
-                <div class="flex-1">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">BIGLIGHTT DESIGN AI</h3>
-
-                    <!-- Videos Grid -->
-                    <div id="videos-grid" class="grid grid-cols-1 gap-4 max-w-md">
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/QBi1LRHBlWI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/7kGmaG_Szlw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/nXL1owfD6lY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/Gun4N7erWEk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/faimq232YIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/93rgK3twtT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/FmV4CAcgxXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ZxnwkMfwbHs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/xviAi22tJJY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/GUx2woZ7IVE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ZwJMtprUFl0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/EyJbf3ROGMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/1_VWoaPoz1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/8hd7CPyUxco" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/QNaEmROVZG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/HyJRLioYs_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/kmwQub8FDlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                        <div class="relative w-full aspect-video">
-                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/W4e5F2O2Hiw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-                    </div>
-
-                <!-- Concert: 극단 노뜰 -->
-                <div class="flex-1">
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mb-4">극단 노뜰</h3>
-                    <div class="grid grid-cols-1 gap-4 max-w-md">
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/R5oZhMiuis8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/HbUWdkjgH4Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/xngGFucd_XE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/UJbdWrGYa8Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/AYHoe3bLS3c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/E4Sis5KtryE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ppCC3v5Uh1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Concert: 뿔난오니 -->
-                    <h3 class="text-xl sm:text-2xl font-semibold text-white mt-8 mb-4">뿔난오니</h3>
-                    <div class="grid grid-cols-1 gap-4 max-w-md">
-                        <div class="bg-slate-800/80 rounded-xl border border-slate-700/80 shadow-xl overflow-hidden">
-                            <div class="relative w-full aspect-video">
-                                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/1gqsNacsz58" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Sidebar (desktop) -->
+        <aside class="hidden lg:flex lg:flex-col w-64 shrink-0 h-screen sticky top-0 bg-black/60 border-r border-slate-800/80">
+            <div class="px-5 py-6 flex items-center gap-2 border-b border-slate-800/80">
+                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-sm font-bold">B</div>
+                <div>
+                    <p class="text-white font-semibold leading-tight">BIGLIGHT</p>
+                    <p class="text-[11px] text-slate-500 leading-tight">영상 자료실</p>
                 </div>
             </div>
-        </section>
-    </main>
+            <nav id="sidebar-nav" class="sidebar-scroll flex-1 overflow-y-auto px-3 py-4 space-y-1"></nav>
+            <div class="px-5 py-4 border-t border-slate-800/80 text-[11px] text-slate-500">
+                공연 조명 디자인 및 작업 영상
+            </div>
+        </aside>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© <span id="year">2026</span> BIGLIGHT Stage Lighting Design. All rights reserved.</p>
-            <p class="text-slate-500">Stage Lighting & Technical Directing Portfolio</p>
+        <!-- Main column -->
+        <div class="flex-1 min-w-0 flex flex-col">
+
+            <!-- Top bar -->
+            <header class="sticky top-0 z-20 bg-black/70 backdrop-blur border-b border-slate-800/80">
+                <div class="px-4 sm:px-6 py-4 flex flex-wrap items-center gap-3 justify-between">
+                    <div class="min-w-0">
+                        <h1 id="current-category-title" class="text-lg sm:text-xl font-bold text-white truncate">전체 영상</h1>
+                        <p id="current-category-count" class="text-xs text-slate-500 mt-0.5">총 0개 영상</p>
+                    </div>
+                    <div class="flex items-center gap-2 flex-1 sm:flex-none justify-end">
+                        <div class="relative w-full max-w-xs">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                            <input id="search-input" type="text" placeholder="카테고리 검색"
+                                class="w-full bg-slate-900 border border-slate-700/80 rounded-lg pl-8 pr-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500">
+                        </div>
+                        <select id="sort-select" class="bg-slate-900 border border-slate-700/80 rounded-lg px-3 py-2 text-sm text-slate-300 focus:outline-none focus:ring-1 focus:ring-brand-500">
+                            <option value="default">기본순</option>
+                            <option value="alpha">이름순</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Mobile category chips -->
+                <nav id="mobile-nav" class="lg:hidden flex gap-2 overflow-x-auto px-4 pb-3 sidebar-scroll"></nav>
+            </header>
+
+            <!-- Grid -->
+            <main class="flex-1 px-4 sm:px-6 py-6">
+                <div id="videos-grid" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+                <p id="empty-state" class="hidden text-center text-slate-500 text-sm py-16">일치하는 영상이 없습니다.</p>
+            </main>
+
+            <footer class="bg-black/40 text-slate-400 py-8 border-t border-slate-800/80 text-xs">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p>&copy; <span id="year">2026</span> BIGLIGHT Stage Lighting Design. All rights reserved.</p>
+                    <p class="text-slate-500">Stage Lighting &amp; Technical Directing Portfolio</p>
+                </div>
+            </footer>
         </div>
-    </footer>
+    </div>
+
+    <!-- Video modal -->
+    <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4">
+        <div class="relative w-full max-w-4xl">
+            <button id="modal-close" aria-label="닫기"
+                class="absolute -top-10 right-0 text-slate-300 hover:text-white text-2xl w-9 h-9 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="aspect-video w-full bg-black rounded-xl overflow-hidden shadow-2xl border border-slate-800">
+                <iframe id="modal-iframe" class="w-full h-full" src="" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 
     <script>
+        // ---- Video data (grouped by project) ----
+        const CATEGORIES = [
+            {
+                id: 'ai', label: 'BIGLIGHTT DESIGN AI', icon: 'fa-robot',
+                badge: 'bg-violet-500/90', ring: 'border-violet-500/60 text-violet-400',
+                videos: [
+                    'QBi1LRHBlWI', '7kGmaG_Szlw', 'nXL1owfD6lY', 'Gun4N7erWEk', 'faimq232YIM',
+                    '93rgK3twtT4', 'FmV4CAcgxXg', 'ZxnwkMfwbHs', 'xviAi22tJJY', 'GUx2woZ7IVE',
+                    'ZwJMtprUFl0', 'EyJbf3ROGMc', '1_VWoaPoz1s', '8hd7CPyUxco',
+                    'HyJRLioYs_Y', 'kmwQub8FDlU', 'W4e5F2O2Hiw'
+                ]
+            },
+            {
+                id: 'lecture', label: '인터넷 강의', icon: 'fa-chalkboard-user',
+                badge: 'bg-amber-500/90', ring: 'border-amber-500/60 text-amber-400',
+                videos: ['QNaEmROVZG8']
+            },
+            {
+                id: 'kkachisan', label: '인디밴드 까치산', icon: 'fa-guitar',
+                badge: 'bg-emerald-500/90', ring: 'border-emerald-500/60 text-emerald-400',
+                videos: ['86jvbvHC4Z4', 'CYpCE1ezoC4', '1NfqstcCfKA', '0x78K8cfcs8', 'on6IxMdR6pc']
+            },
+            {
+                id: 'crispy', label: '인디밴드 크리스피', icon: 'fa-record-vinyl',
+                badge: 'bg-pink-500/90', ring: 'border-pink-500/60 text-pink-400',
+                videos: ['2FhLVM7Ejvc', 'BFgqLEcIOQU', 'nkRDm1foXgU', 'JjusIkn9FbA', '2FhLVM7Ejvc', 'g_KwSM2gj3Q']
+            },
+            {
+                id: 'tigers', label: '극동아시아타이거즈', icon: 'fa-drum',
+                badge: 'bg-orange-500/90', ring: 'border-orange-500/60 text-orange-400',
+                videos: ['c7A7tWn1hbs', 'D3uwsgBn6eI', 'BQ-C6kY99Y8', 'ggk1CLG4xJY', 'mmKm0UgY_eM']
+            },
+            {
+                id: 'notteul', label: '극단 노뜰', icon: 'fa-masks-theater',
+                badge: 'bg-sky-500/90', ring: 'border-sky-500/60 text-sky-400',
+                videos: ['R5oZhMiuis8', 'HbUWdkjgH4Y', 'xngGFucd_XE', 'UJbdWrGYa8Y', 'AYHoe3bLS3c', 'E4Sis5KtryE', 'ppCC3v5Uh1w']
+            },
+            {
+                id: 'ppulnanoni', label: '뿔난오니', icon: 'fa-fire-flame-curved',
+                badge: 'bg-rose-500/90', ring: 'border-rose-500/60 text-rose-400',
+                videos: ['1gqsNacsz58']
+            }
+        ];
+
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let sortMode = 'default';
+
+        function totalCount() {
+            return CATEGORIES.reduce((sum, c) => sum + c.videos.length, 0);
+        }
+
+        function renderNav() {
+            const desktop = document.getElementById('sidebar-nav');
+            const mobile = document.getElementById('mobile-nav');
+            desktop.innerHTML = '';
+            mobile.innerHTML = '';
+
+            const allBtnDesktop = navButton('all', '전체 영상', 'fa-layer-group', totalCount());
+            const allBtnMobile = chipButton('all', '전체', totalCount());
+            desktop.appendChild(allBtnDesktop);
+            mobile.appendChild(allBtnMobile);
+
+            CATEGORIES.forEach(cat => {
+                desktop.appendChild(navButton(cat.id, cat.label, cat.icon, cat.videos.length));
+                mobile.appendChild(chipButton(cat.id, cat.label, cat.videos.length));
+            });
+        }
+
+        function navButton(id, label, icon, count) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.dataset.cat = id;
+            btn.className = 'nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-300 hover:bg-slate-800/60 transition-colors border border-transparent';
+            btn.innerHTML = `<i class="fa-solid ${icon} w-4 text-center text-slate-400"></i><span class="flex-1 text-left truncate">${label}</span><span class="text-[11px] text-slate-500">${count}</span>`;
+            btn.addEventListener('click', () => setActiveCategory(id));
+            return btn;
+        }
+
+        function chipButton(id, label, count) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.dataset.cat = id;
+            btn.className = 'chip-btn shrink-0 px-3 py-1.5 rounded-full text-xs border border-slate-700/80 text-slate-300 whitespace-nowrap';
+            btn.textContent = `${label} (${count})`;
+            btn.addEventListener('click', () => setActiveCategory(id));
+            return btn;
+        }
+
+        function setActiveCategory(id) {
+            activeCategory = id;
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                const on = b.dataset.cat === id;
+                b.classList.toggle('bg-slate-800', on);
+                b.classList.toggle('border-slate-700', on);
+                b.classList.toggle('text-white', on);
+            });
+            document.querySelectorAll('.chip-btn').forEach(b => {
+                const on = b.dataset.cat === id;
+                b.classList.toggle('bg-brand-600', on);
+                b.classList.toggle('border-brand-600', on);
+                b.classList.toggle('text-white', on);
+            });
+            renderGrid();
+        }
+
+        function renderGrid() {
+            const grid = document.getElementById('videos-grid');
+            const empty = document.getElementById('empty-state');
+            grid.innerHTML = '';
+
+            let cats = CATEGORIES.filter(c => activeCategory === 'all' || c.id === activeCategory);
+            cats = cats.filter(c => c.label.toLowerCase().includes(searchQuery.toLowerCase()));
+            if (sortMode === 'alpha') {
+                cats = [...cats].sort((a, b) => a.label.localeCompare(b.label, 'ko'));
+            }
+
+            let cardCount = 0;
+            cats.forEach(cat => {
+                cat.videos.forEach((videoId, idx) => {
+                    grid.appendChild(buildCard(cat, videoId, idx));
+                    cardCount++;
+                });
+            });
+
+            empty.classList.toggle('hidden', cardCount > 0);
+
+            // Update header title/count
+            const titleEl = document.getElementById('current-category-title');
+            const countEl = document.getElementById('current-category-count');
+            if (activeCategory === 'all') {
+                titleEl.textContent = '전체 영상';
+            } else {
+                const cat = CATEGORIES.find(c => c.id === activeCategory);
+                titleEl.textContent = cat ? cat.label : '전체 영상';
+            }
+            countEl.textContent = `총 ${cardCount}개 영상`;
+
+            requestAnimationFrame(() => {
+                document.querySelectorAll('.video-card').forEach((el, i) => {
+                    setTimeout(() => el.classList.add('is-shown'), i * 25);
+                });
+            });
+        }
+
+        function buildCard(cat, videoId, idx) {
+            const card = document.createElement('div');
+            card.className = 'video-card group cursor-pointer';
+            card.innerHTML = `
+                <div class="relative rounded-xl overflow-hidden border border-slate-800/80 bg-slate-900 aspect-video">
+                    <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${cat.label} 영상 썸네일"
+                        loading="lazy" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors"></div>
+                    <span class="absolute top-2 left-2 ${cat.badge} text-white text-[10px] font-semibold px-2 py-1 rounded-md">${cat.label}</span>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-slate-900">
+                            <i class="fa-solid fa-play ml-0.5"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-2 text-xs text-slate-400 truncate">${cat.label} #${idx + 1}</p>
+            `;
+            card.addEventListener('click', () => openModal(videoId));
+            return card;
+        }
+
+        // ---- Modal ----
+        function openModal(videoId) {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            modal.classList.remove('hidden');
+            modal.classList.add('is-open');
+        }
+        function closeModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('modal-iframe');
+            modal.classList.add('hidden');
+            modal.classList.remove('is-open');
+            iframe.src = '';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Scroll Intersection Observer for Fade-in animation
-            const fadeSections = document.querySelectorAll('.fade-in-section');
-            const observerOptions = {
-                root: null,
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            };
+            renderNav();
+            setActiveCategory('all');
 
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            document.getElementById('search-input').addEventListener('input', (e) => {
+                searchQuery = e.target.value.trim();
+                renderGrid();
+            });
+            document.getElementById('sort-select').addEventListener('change', (e) => {
+                sortMode = e.target.value;
+                renderGrid();
+            });
 
-            fadeSections.forEach(section => observer.observe(section));
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            document.getElementById('video-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'video-modal') closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
         });
     </script>
 </body>
